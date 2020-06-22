@@ -10,12 +10,13 @@ Pod::Spec.new do |s|
   # archive_name = "sqlite-amalgamation-"+v[0]+v[1].rjust(2, '0')+v[2].rjust(2, '0')+"00"
   archive_name = "libspatialite-4.3.0"
   # s.source   = { :http => "https://www.sqlite.org/#{Time.now.year}/#{archive_name}.zip" }
-  s.source   = { :http => "https://www.gaia-gis.it/gaia-sins/libspatialite-sources/#{archive_name}.zip" }
+  source   = "https://www.gaia-gis.it/gaia-sins/libspatialite-sources/#{archive_name}.zip"
+  s.source   = { :http => "#{source}" }
   s.requires_arc = false
 
   s.default_subspecs = 'core'
 
-  s.prepare_command = "curl -OL #{s.source.html} ; ls . ; #{archive_name}/configure --enable-geos=no --enable-proj=no --enable-freexl=no"
+  s.prepare_command = "curl -OL #{source} ; ls . ; #{archive_name}/configure --enable-geos=no --enable-proj=no --enable-freexl=no"
 
   s.subspec 'core' do |ss|
     # ss.source_files = "#{archive_name}/sqlite*.{h,c}"
