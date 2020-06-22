@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.default_subspecs = 'core'
 
-  s.prepare_command = "curl -OL #{source} ; unzip #{archive_name}.zip ; ls . ; #{archive_name}/configure --enable-geos=no --enable-proj=no --enable-freexl=no --disable-lwgeom --disable-gcp"
+  s.prepare_command = "curl -OL #{source} ; unzip #{archive_name}.zip ; ls . ; (cd #{archive_name} && ./configure --enable-geos=no --enable-proj=no --enable-freexl=no --disable-lwgeom --disable-gcp)"
 
   s.subspec 'core' do |ss|
     # ss.source_files = "#{archive_name}/sqlite*.{h,c}"
